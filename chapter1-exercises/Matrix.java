@@ -3,13 +3,7 @@ import edu.princeton.cs.algs4.StdOut;
 import java.util.Arrays;
 
 public class Matrix {
-    private int row;
-    private int column;
-
-    public Matrix(int[][] m) {
-        int[][] matrix = m;
-    }
-
+   
     //get the size of matrix
     public static int[] size(double[][] m) {
         int[] size = new int[2];
