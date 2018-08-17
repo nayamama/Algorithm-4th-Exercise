@@ -10,6 +10,8 @@ public class LinkedListExercises <Item>{
         private Node next = null;
 
         public Node(Item e){val = e;}
+
+        public boolean equals(Node that) { return this.val == that.val; }
     }
 
     public boolean isEmpty(){return n == 0;}
@@ -78,6 +80,27 @@ public class LinkedListExercises <Item>{
         return false;
     }
 
+    // takes a linked-list Node as argument and removes the node following the given one (and does nothing
+    // if the argument or the next field in the argument node is null).
+    public void removeAfter(Node c){
+        if(size() == 0 || c.equals(last)) return;
+        Node cur = first;
+        while(cur.next!= null){
+            if(cur.equals(c)){
+                if(cur.next.equals(last)){
+                    last = cur;
+                    last.next = null;
+                }
+                else{
+                    cur.next = cur.next.next;
+                }
+                n--;
+                break;
+            }
+            cur = cur.next;
+        }
+    }
+
     public String toString(){
         Node current = first;
         String res = "";
@@ -96,9 +119,12 @@ public class LinkedListExercises <Item>{
         link.add(new Node("charm"));
 
         StdOut.println(link);
+        Node node = new Node("meng");
         //link.removeLast();
         //link.delete(4);
+        //StdOut.println(link.find("at"));
+        link.removeAfter(node);
+        StdOut.println(link);
         StdOut.printf("The head of link is %s, the tail of link is %s, the size is %d.\n", link.getFirst(), link.getLast(), link.size());
-        StdOut.println(link.find("at"));
     }
 }
